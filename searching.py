@@ -3,6 +3,8 @@ import json
 
 
 def read_data(file_name, field):
+    cwd_path = Path.cwd()
+    file_path = cwd_path / file_name
     with open (file_name, "r") as f:
         data = json.load(f)
     if field not in data:
@@ -29,20 +31,35 @@ def read_data(file_name, field):
     
     file_path = cwd_path / file_name
 
-def liner_search(sekvence, wanted_number):
+def linear_search(sequention, wanted_number):
     positions = []
-    for i, value in enumerate(sekvence):
+    for i, value in enumerate(sequention):
         if value == wanted_number:
             positions.append(i)
     return {"positions": positions, "count": len(positions)}
 
+def binary_search(sez, number):
+    left = 0
+    right = len(sez) - 1
+    while left <= right:
+        middle_point = (left + right) // 2
+
+        if sez[middle_point] == number:
+            return middle_point
+        if sez[middle_point] < number:
+            left = middle_point + 1
+        else:
+            right = middle_point + 1
+
+    return None
+
 def main():
     unordered = read_data("sequential.json", "unordered_numbers")
-    target = 5
+    target = 8
     linear_result = linear_search(unordered, target)
     print(linear_result)
 
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
