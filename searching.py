@@ -37,7 +37,11 @@ def liner_search(sekvence, wanted_number):
     return {"positions": positions, "count": len(positions)}
 
 def main():
-    pass
+    unordered = read_data("sequential.json", "unordered_numbers")
+    target = 5
+    linear_result = linear_search(unordered, target)
+    print(linear_result)
+
 
 
 if __name__ == "__main__":
