@@ -3,6 +3,12 @@ import json
 
 
 def read_data(file_name, field):
+    with open (file_name, "r") as f:
+        data = json.load(f)
+
+    print(data)
+
+
     """
     Reads a JSON file and returns data for a given field.
 
