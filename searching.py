@@ -1,10 +1,13 @@
 from pathlib import Path
 import json
-
+import matplotlib.pyplot as plt
+import time
+import random
 
 def read_data(file_name, field):
     cwd_path = Path.cwd()
     file_path = cwd_path / file_name
+
     with open (file_name, "r") as f:
         data = json.load(f)
     if field not in data:
@@ -31,9 +34,9 @@ def read_data(file_name, field):
     
     file_path = cwd_path / file_name
 
-def linear_search(sequention, wanted_number):
+def linear_search(sequence, wanted_number):
     positions = []
-    for i, value in enumerate(sequention):
+    for i, value in enumerate(sequence):
         if value == wanted_number:
             positions.append(i)
     return {"positions": positions, "count": len(positions)}
@@ -49,7 +52,7 @@ def binary_search(sez, number):
         if sez[middle_point] < number:
             left = middle_point + 1
         else:
-            right = middle_point + 1
+            right = middle_point - 1
 
     return None
 
@@ -58,6 +61,26 @@ def main():
     target = 8
     linear_result = linear_search(unordered, target)
     print(linear_result)
+
+
+sizes = [100, 500, 1000, 5000, 10000]
+times_linear = []
+times_binary = []
+
+for n in sizes:
+    sequence = ordered_sequence(n)
+
+    start = time.perf_counter()
+    res = binary_search(seq, 5)
+    time = time.perf_counter() - start
+    times-binary.append(time)
+
+plt.plot(sizes, times_binary)
+plt.xlabel("Velikost vstupu")
+plt.ylabel("Čas [s]")
+plt.title("Ukázkový graf měření")
+plt.show()
+
 
 
 
