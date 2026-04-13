@@ -5,9 +5,10 @@ import json
 def read_data(file_name, field):
     with open (file_name, "r") as f:
         data = json.load(f)
+    if field not in data:
+        return None
 
-    print(data)
-
+    return data[field]
 
     """
     Reads a JSON file and returns data for a given field.
@@ -28,6 +29,12 @@ def read_data(file_name, field):
     
     file_path = cwd_path / file_name
 
+def liner_search(sekvence, wanted_number):
+    positions = []
+    for i, value in enumerate(sekvence):
+        if value == wanted_number:
+            positions.append(i)
+    return {"positions": positions, "count": len(positions)}
 
 def main():
     pass
