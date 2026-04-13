@@ -73,8 +73,9 @@ for n in sizes:
     start = time.perf_counter()
     res = binary_search(seq, 5)
     time = time.perf_counter() - start
-    times-binary.append(time)
+    times_binary.append(time)
 
+plt.plot(sizes, times_linear)
 plt.plot(sizes, times_binary)
 plt.xlabel("Velikost vstupu")
 plt.ylabel("Čas [s]")
