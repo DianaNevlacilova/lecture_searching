@@ -1,6 +1,6 @@
 from pathlib import Path
 import json
-import matplotlib.pyplot as plt
+
 import time
 import random
 
@@ -62,6 +62,8 @@ def main():
     linear_result = linear_search(unordered, target)
     print(linear_result)
 
+from generators import ordered_sequence
+from searching import linear_search, binary_search
 
 sizes = [100, 500, 1000, 5000, 10000]
 times_linear = []
